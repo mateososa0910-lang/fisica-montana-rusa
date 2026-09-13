@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Física de la Montaña Rusa - Presentación Moderna</title>
+  
+  <!-- Reveal.js CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/black.min.css">
+  
+  <style>
+    :root {
+      --primary: #00f0ff;
+      --secondary: #ff007f;
+      --bg-card: rgba(15, 23, 42, 0.75);
+    }
+    .reveal {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+    .reveal h1, .reveal h2 {
+      text-transform: uppercase;
+      color: var(--primary);
+      text-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+    }
+    
+    /* Layout de Cuadrícula con Imagen/Media */
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      align-items: center;
+      text-align: left;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid rgba(0, 240, 255, 0.2);
+      border-radius: 12px;
+      padding: 18px;
+      font-size: 0.65em;
+      line-height: 1.4;
+      max-height: 450px;
+      overflow-y: auto;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      backdrop-filter: blur(8px);
+    }
+
+    .card img, .card iframe {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 10px;
+    }
+
+    /* Scrollbar personalizada */
+    .card::-webkit-scrollbar { width: 6px; }
+    .card::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); }
+    .card::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+    .highlight { color: var(--secondary); font-weight: bold; }
+    .badge {
+      background: var(--secondary);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.5em;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    /* Simulación Interactiva */
+    #sim-canvas {
+      background: #0d1117;
+      border: 1px solid var(--primary);
+      border-radius: 8px;
+      width: 100%;
+      height: 220px;
+    }
+    .sim-btn {
+      background: var(--primary);
+      color: #000;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+    .sim-btn:hover { background: var(--secondary); color: #fff; }
+  </style>
+</head>
+<body>
+
+  <div class="reveal">
+    <div class="slides">
+
+    <!-- SLIDE 1: PORTADA CON ANIMACIÓN DE MONTAÑA RUSA -->
+<section style="text-align: center;">
+  <div style="
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(255, 0, 127, 0.1));
+    border: 2px solid var(--primary);
+    border-radius: 20px;
+    padding: 30px 25px;
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+  ">
+    
+    <!-- ANIMACIÓN SVG MONTAÑA RUSA -->
+    <div style="width: 100%; max-width: 500px; margin: 0 auto 15px auto;">
+      <svg viewBox="0 0 500 120" style="width: 100%; height: auto; overflow: visible;">
+        <!-- Riel de la montaña rusa (Trazo Neón) -->
+        <path d="M 10 100 Q 100 20 180 80 T 320 40 Q 400 110 490 30" 
+              fill="none" 
+              stroke="#00f0ff" 
+              stroke-width="4" 
+              stroke-linecap="round"
+              style="filter: drop-shadow(0 0 8px #00f0ff);" />
+
+        <!-- Estructura de soporte (Líneas finas) -->
+        <path d="M 60 70 L 60 110 M 140 55 L 140 110 M 230 75 L 230 110 M 320 40 L 320 110 M 410 85 L 410 110" 
+              stroke="rgba(255,255,255,0.2)" 
+              stroke-width="2" 
+              stroke-dasharray="3,3" />
+
+        <!-- Carrito animado -->
+        <g>
+          <rect x="-12" y="-8" width="24" height="12" rx="4" fill="#ff007f" style="filter: drop-shadow(0 0 6px #ff007f);" />
+          <circle cx="-6" cy="5" r="3" fill="#ffffff" />
+          <circle cx="6" cy="5" r="3" fill="#ffffff" />
+          
+          <!-- Animación de movimiento a lo largo del riel -->
+          <animateMotion 
+            path="M 10 100 Q 100 20 180 80 T 320 40 Q 400 110 490 30" 
+            dur="5s" 
+            repeatCount="indefinite" 
+            rotate="auto" />
+        </g>
+      </svg>
+    </div>
+
+    <span class="badge" style="font-size: 0.55em; letter-spacing: 2px; padding: 4px 14px;">
+      TRABAJO PRÁCTICO EVALUATIVO DE FÍSICA
+    </span>
+    
+    <h1 style="
+      font-size: 2em; 
+      margin: 10px 0 5px 0; 
+      line-height: 1.1;
+      background: linear-gradient(90deg, #00f0ff, #ff007f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: none;
+    ">
+      FÍSICA DE LA MONTAÑA RUSA
+    </h1>
+    
+    <p style="color: #e2e8f0; font-size: 0.75em; font-weight: 300; margin-bottom: 20px;">
+      Energía Cinética, Potencial, Mecánica y Trabajo Mecánico
+    </p>
+
+    <!-- Datos del Grupo -->
+    <div style="
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      gap: 10px; 
+      background: rgba(0, 0, 0, 0.4); 
+      padding: 12px; 
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: left;
+      font-size: 0.5em;
+    ">
+      <div>
+        <p style="margin: 2px 0; color: var(--primary);"><strong>Institución:</strong> IPET N° 424</p>
+        <p style="margin: 2px 0; color: #cbd5e1;"><strong>Curso:</strong> 5TO B</p>
+      </div>
+      <div>
+        <p style="margin: 2px 0; color: var(--secondary);"><strong>Integrantes:</strong></p>
+        <p style="margin: 2px 0; color: #cbd5e1;">Juan Martín Rodríguez • Ramiro Mercado</p>
+        <p style="margin: 2px 0; color: #cbd5e1;">Bautista Pereda • Mateo Sosa • Alex Flores</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+      <!-- SLIDE 2: ENERGÍA POTENCIAL I -->
+      <section>
+        <h2>01. Energía Potencial Gravitatoria</h2>
+        <div class="grid-2col">
+          <div class="card">
+            <p>La <span class="highlight">energía potencial gravitatoria</span> es la energía almacenada debido a la posición vertical dentro de un campo gravitatorio.</p>
+            <p>Representa el combustible inicial acumulado para realizar todo el recorrido sin tracción propia.</p>
+            <p><strong>Fórmula: $E_p = m \cdot g \cdot h$</strong></p>
+            <ul>
+              <li><strong>Masa ($m$):</strong> Carga combinada en kg.</li>
+              <li><strong>Gravedad ($g$):</strong> Constante ~9,81 m/s².</li>
+              <li><strong>Altura ($h$):</strong> Distancia vertical desde la base.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <img src="https://fisiquimicamente.com/blog/2023/06/08/la-fisica-de-los-loops-de-las-montanas-rusas/carolina-cyclone_hu_76fa5ee8e7cdbf12.webp">
+            <p><small>Punto más alto: $E_p$ Máxima / $E_c$ Nula.</small></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 3: ENERGÍA POTENCIAL II (VIDEO) -->
+      <section>
+        <h2>02. Conservación y Factor Real</h2>
+        <div class="grid-2col">
+          <div class="card">
+            <p><strong>Pérdida por Rozamiento:</strong> En el mundo real, la fricción mecánica y la resistencia del aire disipan energía en forma de calor y ruido.</p>
+            <p><strong>Consecuencias en el Diseño:</strong></p>
+            <ul>
+              <li><strong>Colinas decrecientes:</strong> Cada colina debe ser más baja que la anterior.</li>
+              <li><strong>Margen de seguridad:</strong> Evita que el vagón quede varado.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <!-- Video de demostración física -->
+            <img src=https://images.unsplash.com/photo-1512599714298-5d92beeb6f91?q=80&w=952&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+            <p><small>Demostración visual de la transformación de energía.</small></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 4: ENERGÍA CINÉTICA I -->
+      <section>
+        <h2>03. Energía Cinética y Movimiento</h2>
+        <div class="grid-2col">
+          <div class="card">
+            <p>La <span class="highlight">energía cinética</span> es la que posee un cuerpo debido a su movimiento.</p>
+            <p><strong>Fórmula: $E_c = \frac{1}{2} m v^2$</strong></p>
+            <hr>
+            <p><strong>Sistemas de Impulso Inicial:</strong></p>
+            <ul>
+              <li><strong>Cadena de elevación:</strong> Arrastra el vagón lentamente a la cima.</li>
+              <li><strong>Lanzamiento:</strong> Motores magnéticos/hidráulicos inyectan $E_c$ directamente.</li>
+            </ul>
+          </div>
+          <div class="card">
+          <img src=https://images.unsplash.com/photo-1676958439153-35e94492cf2a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDU1fHx8ZW58MHx8fHx8">
+        </div>
+      </section>
+
+      <!-- SLIDE 5: ENERGÍA CINÉTICA II -->
+      <section>
+        <h2>04. Geometría de Bucles y Frenos</h2>
+        <div class="grid-2col">
+          <div class="card">
+            <p><strong>Forma de la Clotoide:</strong> Para evitar fuerzas de gravedad peligrosas para el cuerpo humano, los bucles no son círculos perfectos sino curvas en forma de gota con radio variable.</p>
+            <p><strong>Frenos Magnéticos:</strong> Absorben la $E_c$ transformándola en calor mediante corrientes de Foucault al final del trayecto.</p>
+          </div>
+          <div class="card">
+            <img src="https://fisiquimicamente.com/blog/2023/06/08/la-fisica-de-los-loops-de-las-montanas-rusas/loop_hu_dad37c78673813db.webp" alt="Bucle Clotoide">
+            <p><small>Geometría clotoide ajustada a la velocidad de entrada.</small></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 6: ENERGÍA MECÁNICA (SIMULADOR INTERACTIVO) -->
+      <section>
+        <h2>05. Energía Mecánica Interactiva</h2>
+        <div class="grid-2col">
+          <div class="card">
+            <p>En un modelo ideal sin rozamiento: <span class="highlight">$E_m = E_p + E_c = \text{Constante}$</span></p>
+            <canvas id="sim-canvas"></canvas>
+            <button class="sim-btn" onclick="startSim()">Lanzar Carrito</button>
+          </div>
+          <div class="card">
+            <p><strong>Estados Energéticos:</strong></p>
+            <ul>
+              <li><strong>Cima:</strong> $100\% E_p$ | $0\% E_c$</li>
+              <li><strong>Bajada:</strong> Intercambio dinámico $E_p \leftrightarrow E_c$</li>
+              <li><strong>Base:</strong> $0\% E_p$ | $100\% E_c$ (Velocidad Máxima)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 7: ENERGÍA MECÁNICA - CICLO -->
+      <section>
+        <h2>06. Ciclo Continuo del Trayecto</h2>
+        <div class="card" style="text-align: center;">
+          <p><strong>"La energía no se crea ni se destruye, solo se transforma"</strong></p>
+          <div style="display: flex; justify-content: space-around; margin-top:20px;">
+            <div style="border:1px solid var(--primary); padding:10px; border-radius:8px;">
+              <h4>En Subidas</h4>
+              <p>Pierde $E_c$ (velocidad)<br>Gana $E_p$ (altura)</p>
+            </div>
+            <div style="border:1px solid var(--secondary); padding:10px; border-radius:8px;">
+              <h4>En Bajadas</h4>
+              <p>Pierde $E_p$ (altura)<br>Gana $E_c$ (velocidad)</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 8: TRABAJO MECÁNICO I -->
+      <section>
+        <h2>07. Trabajo Positivo y Negativo</h2>
+        <div class="grid-2col">
+          <div class="card">
+            <p><strong>Trabajo Positivo ($W > 0$):</strong> Fuerza a favor del movimiento.</p>
+            <ul>
+              <li><strong>Motor inicial:</strong> Empuja el vagón e inyecta energía acumulando $E_p$.</li>
+              <li><strong>Gravedad en bajadas:</strong> Tira hacia abajo aumentando la velocidad ($E_c$).</li>
+            </ul>
+          </div>
+          <div class="card">
+            <p><strong>Trabajo Negativo ($W < 0$):</strong> Fuerza opuesta al movimiento.</p>
+            <ul>
+              <li><strong>Gravedad en subidas:</strong> Frena el vagón mientras recupera altura.</li>
+              <li><strong>Frenos finales:</strong> Disipan toda la $E_c$ hasta detener la formación.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 9: TRABAJO MECÁNICO II -->
+      <section>
+        <h2>08. Fricción y Trabajo Nulo</h2>
+        <div class="grid-2col">
+          <div class="card">
+            <p><strong>Fricción y Rozamiento del Aire ($W < 0$):</strong></p>
+            <p>Actúa siempre a $180^\circ$ del movimiento, robando energía mecánica y convirtiéndola en calor y sonido.</p>
+          </div>
+          <div class="card">
+            <p><strong>Fuerza Normal de la Pista ($W = 0$):</strong></p>
+            <p>La pista empuja a $90^\circ$ (perpendicular). Al formar un ángulo recto con el desplazamiento, <span class="highlight">el trabajo es estrictamente nulo</span>.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 10: TABLA RESUMEN -->
+      <section>
+        <h2>09. Matriz Energética del Trabajo</h2>
+        <div class="card">
+          <table style="width:100%; color: white; border-collapse: collapse;">
+            <thead>
+              <tr style="border-bottom: 2px solid var(--primary); text-align:left;">
+                <th>Etapa</th>
+                <th>Fuerza</th>
+                <th>Ángulo</th>
+                <th>Trabajo</th>
+                <th>Efecto Energético</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Elevación</td>
+                <td>Motor</td>
+                <td>$0^\circ$</td>
+                <td>Positivo</td>
+                <td>Acumula $E_p$</td>
+              </tr>
+              <tr>
+                <td>Bajada</td>
+                <td>Gravedad</td>
+                <td>$<90^\circ$</td>
+                <td>Positivo</td>
+                <td>Convierte $E_p \to E_c$</td>
+              </tr>
+              <tr>
+                <td>Subida/Loop</td>
+                <td>Gravedad</td>
+                <td>$>90^\circ$</td>
+                <td>Negativo</td>
+                <td>Convierte $E_c \to E_p$</td>
+              </tr>
+              <tr>
+                <td>Fricción</td>
+                <td>Rozamiento</td>
+                <td>$180^\circ$</td>
+                <td>Negativo</td>
+                <td>Disipa $E_m$ en calor</td>
+              </tr>
+              <tr>
+                <td>Soporte Pista</td>
+                <td>Normal</td>
+                <td>$90^\circ$</td>
+                <td>Nulo ($W=0$)</td>
+                <td>Guía sin alterar energía</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+<!-- SLIDE FINAL -->
+<section style="text-align: center;">
+  <span class="badge">FIN DE LA PRESENTACIÓN</span>
+  <h2>¿Preguntas o Dudas?</h2>
+  <div class="card" style="text-align: center; margin-top: 30px;">
+    <p>¡Muchas gracias por su atención!</p>
+    <p><small>Trabajo Práctico Evaluativo de Física - 5TO B IPET N° 424</small></p>
+  </div>
+</section>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/math/math.min.js"></script>
+
+  <script>
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      center: true,
+      hash: true,
+      transition: 'convex',
+      plugins: [ RevealMath.MathJax2 ]
+    });
+
+    // Código del Simulador Interactivo Canvas
+    let animId;
+    function startSim() {
+      cancelAnimationFrame(animId);
+      const canvas = document.getElementById('sim-canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = canvas.parentElement.clientWidth - 40;
+      canvas.height = 180;
+
+      let t = 0;
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Dibujar Pista
+        ctx.beginPath();
+        ctx.strokeStyle = '#00f0ff';
+        ctx.lineWidth = 3;
+        for (let x = 0; x < canvas.width; x++) {
+          let y = 100 + Math.sin(x * 0.02 + t) * 50;
+          if (x === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+
+        // Posición del Carrito
+        let cartX = (t * 50) % canvas.width;
+        let cartY = 100 + Math.sin(cartX * 0.02 + t) * 50;
+
+        // Carrito
+        ctx.fillStyle = '#ff007f';
+        ctx.beginPath();
+        ctx.arc(cartX, cartY - 8, 8, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Barras de Energía
+        let ep = (150 - cartY) / 100; // Normalizado
+        let ec = 1 - ep;
+
+        // Barra Ep (Verde)
+        ctx.fillStyle = '#00ff88';
+        ctx.fillRect(10, 10, ep * 100, 10);
+        ctx.fillText('Ep', 115, 18);
+
+        // Barra Ec (Azul)
+        ctx.fillStyle = '#00aeff';
+        ctx.fillRect(10, 25, ec * 100, 10);
+        ctx.fillText('Ec', 115, 33);
+
+        t += 0.03;
+        animId = requestAnimationFrame(draw);
+      }
+      draw();
+    }
+  </script>
+</body>
+</html>
